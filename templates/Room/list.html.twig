@@ -10,21 +10,21 @@
                             <div class="col-12">Rechercher :</div>
                             <div class="col-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="smoker">
-                                    <label class="custom-control-label" for="smoker">{{ "smoker"|trans }}</label>
+                                    <input type="checkbox" class="custom-control-input checkFilter" id="smoking">
+                                    <label class="custom-control-label" for="smoking">{{ "smoker"|trans }}</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="animals">
-                                    <label class="custom-control-label" for="animals">{{ "animals"|trans }}</label>
+                                    <input type="checkbox" class="custom-control-input checkFilter" id="animalAllowed">
+                                    <label class="custom-control-label" for="animalAllowed">{{ "animals"|trans }}</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="handicape">
+                                    <input type="checkbox" class="custom-control-input checkFilter" id="handicappedAccess">
                                     <label class="custom-control-label"
-                                           for="handicape">{{ "handiccaped"|trans }}</label>
+                                           for="handicappedAccess">{{ "handiccaped"|trans }}</label>
                                 </div>
                             </div>
                         </div>
@@ -93,8 +93,32 @@
                 });
 
             $("input[type='checkbox']").on("change", function() {
-                var id = $(this).attr('id');
-                $(".room").filter("date-".id).hide();
+                var filter = [];
+                $("input[type='checkbox']").each(function(i, item) {
+                    if($(this).is(":checked")) {
+                        filter.push($(this).attr("id"));
+                    }
+                })
+                /*$(".checkFilter").each(function(i, item) {
+                    var id = $(this).attr("id");
+                })*/
+                $(".room").slideDown();
+
+                $(".room").each(function(j,jitem) {
+                    var display = true;
+                    var $this = $(this);
+                    $.each(filter, function(i, item) {
+                        console.log($this);
+                        if($this.attr("data-" + item) != "1") {
+                            display = false;
+                        }
+                    });
+                    if(!display) {
+                        $this.slideUp();
+                    }
+                })
+
+
             })
         })
     </script>
