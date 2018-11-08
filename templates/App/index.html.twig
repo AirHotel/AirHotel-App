@@ -23,7 +23,7 @@
                             <select required name="type" class="form-control">
                                 <option selected disabled>{{ "typeofroom"|trans }}</option>
                                 {% for roomType in roomTypes %}
-                                    <option value="{{ roomType.name }}">{{ ('room.type.' ~ roomType.name|lower) |trans }}</option>
+                                    <option value="{{ roomType.name }}">{{ ('index.' ~ roomType.name|lower) |trans }}</option>
                                 {% endfor %}
                             </select>
                         </div>
