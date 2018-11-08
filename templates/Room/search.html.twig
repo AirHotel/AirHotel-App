@@ -5,37 +5,29 @@
         <div class="card mt-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="row">
-                            <div class="col-12">Rechercher :</div>
-                            <div class="col-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input checkFilter" id="smoking">
-                                    <label class="custom-control-label" for="smoking">{{ "smoker"|trans }}</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input checkFilter" id="animalAllowed">
-                                    <label class="custom-control-label" for="animalAllowed">{{ "animals"|trans }}</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input checkFilter" id="handicappedAccess">
-                                    <label class="custom-control-label"
-                                           for="handicappedAccess">{{ "handiccaped"|trans }}</label>
-                                </div>
-                            </div>
+                    <div class="col-md-3">
+                        Rechercher :
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input checkFilter" id="smoking">
+                            <label class="custom-control-label" for="smoking">{{ "smoker"|trans }}</label>
+                        </div>
+                        <!-- <div class="col-12">Date: {{ "from"|trans }} <input type="text" id="arrivalDate"
+                                                                            class="form-control"/> {{ "to"|trans }}
+                            <input type="text" id="departureDate" class="form-control"/></div>-->
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input checkFilter" id="animalAllowed">
+                            <label class="custom-control-label" for="animalAllowed">{{ "animals"|trans }}</label>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="col-12">
-                            Date:
-                            {{ "from"|trans }}
-                            <input type="text" id="arrivalDate" class="form-control" value="{{ arrivalDate }}"/>
-                            {{ "to"|trans }}
-                            <input type="text" id="departureDate" class="form-control" value="{{ departDate }}"/>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input checkFilter" id="handicappedAccess">
+                            <label class="custom-control-label"
+                                   for="handicappedAccess">{{ "handiccaped"|trans }}</label>
                         </div>
                     </div>
                 </div>
