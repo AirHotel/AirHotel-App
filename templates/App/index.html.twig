@@ -48,7 +48,7 @@
             <tbody>
                 {% for roomType in roomTypes %}
                     <tr>
-                        <td>{{ ('room.type.' ~ roomType.name|lower) |trans }}</td>
+                        <td>{{ ('index.' ~ roomType.name|lower) |trans }}</td>
                         <td>200</td>
                         <td>{{ roomType.price }}</td>
                     </tr>
