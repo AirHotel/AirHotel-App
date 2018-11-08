@@ -11,6 +11,8 @@
 
 namespace App\Controller;
 
+use App\Repository\RoomTypeRepository;
+use App\Repository\RoomRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
@@ -23,15 +25,19 @@ class AppController
     /**
      * @Route("/", name="index")
      */
-    public function index(Environment $twig)
+    public function index(Environment $twig, RoomTypeRepository $roomTypeRepository)
     {
-        return new Response($twig->render('App/index.html.twig'));
+        $roomTypes = $roomTypeRepository->findAll();
+
+        return new Response($twig->render('App/index.html.twig', [
+            'roomTypes' => $roomTypes
+        ]));
     }
 
     /**
      * @Route("/test", name="test")
      */
-    public function test(Environment $twig)
+    public function test(Environment $twig, RoomRepository $roomRepository)
     {
         $datesBDD = [
             [date_create("2013-03-15"),date_create("2013-03-20")],
@@ -54,6 +60,8 @@ class AppController
                 echo "Date est pas OK<br>";
             }
         }
+
+        $roomRepository->getAvailableRoomsForDates($da, $dp);
 
         return new Response($twig->render('App/index.html.twig'));
     }

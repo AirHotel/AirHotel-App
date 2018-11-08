@@ -5,7 +5,7 @@ index:
   home: Bienvenue
   roomremaining: Chambres restantes
   showroom: Voir les chambres
-  simple: Simple
+  single: Simple
   double: Double
   family: Familiale
   taxe: "Hors taxe de séjour : 1.25€/jour et par adulte."
@@ -28,12 +28,12 @@ to: Au
 room: Chambre
 rooms: Chambres
 arrivalDate: Date d'arrivé
-departDate: Date de depart
+departDate: Date de départ
 reserve: Réserver
 cipher: Cryptograme
 expiryDate : Date d'expiration
 cardCode : Code de carte
 holder : Titulaire
 typeofroom: Type de chambre
+research: Rechercher
 
-Single: Simple

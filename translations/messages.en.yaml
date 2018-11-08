@@ -5,7 +5,7 @@ index:
   home: Welcome
   roomremaining: Room remaining
   showroom: Show rooms
-  simple: Simple
+  single: Single
   double: Double
   family: Family
   taxe: "Excluding tourist tax: 1.25€ / day and per adult."
@@ -35,5 +35,6 @@ expiryDate : Expiration date
 cardCode : Card code
 holder : Holder
 typeofroom: Type of room
+research: Research
 
-Single: Single
+

@@ -22,13 +22,15 @@
                         <div class="col-md-3">
                             <select required name="type" class="form-control">
                                 <option selected disabled>{{ "typeofroom"|trans }}</option>
-                                <option value="single">{{ "index.simple"|trans }}</option>
-                                <option value="double">{{ "index.double"|trans }}</option>
-                                <option value="family">{{ "index.family"|trans }}</option>
+                                {% for roomType in roomTypes %}
+                                    <option value="{{ roomType.name }}">{{ ('index.' ~ roomType.name|lower) |trans }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <button type="submit" class="btn btn-success btn-block">Rechercher</button>
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fa fa-search"></i> {{ "research"|trans }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -37,28 +39,20 @@
 
         <table class="table mt-3">
             <thead>
-            <tr>
-                <th>Type</th>
-                <th>{{ 'index.roomremaining'|trans }}</th>
-                <th>{{ 'price'|trans }} *</th>
-            </tr>
+                <tr>
+                    <th>Type</th>
+                    <th>{{ 'index.roomremaining'|trans }}</th>
+                    <th>{{ 'price'|trans }} *</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>{{ 'index.simple'|trans }}</td>
-                <td>200</td>
-                <td>60€</td>
-            </tr>
-            <tr>
-                <td>{{ 'index.double'|trans }}</td>
-                <td>120</td>
-                <td>70€</td>
-            </tr>
-            <tr>
-                <td>{{ 'index.family'|trans }}</td>
-                <td>100</td>
-                <td>85€</td>
-            </tr>
+                {% for roomType in roomTypes %}
+                    <tr>
+                        <td>{{ ('room.type.' ~ roomType.name|lower) |trans }}</td>
+                        <td>200</td>
+                        <td>{{ roomType.price }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
         <p class="font-weight-light font-italic">* {{ "index.taxe"|trans }}</p>
