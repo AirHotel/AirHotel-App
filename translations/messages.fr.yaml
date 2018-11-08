@@ -35,5 +35,6 @@ expiryDate : Date d'expiration
 cardCode : Code de carte
 holder : Titulaire
 typeofroom: Type de chambre
+research: Rechercher
 
 Single: Simple
