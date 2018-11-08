@@ -73,12 +73,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#arrivalDate, #departureDate").datepicker({
-                format: "dd/mm/yyyy",
-                language: "{{ app.request.locale }}"
+                format: "dd/mm/yyyy"
             });
 
             $('#arrivalDate').datepicker()
                 .on("changeDate", function (e) {
+                    console.log(e.date);
                     $("#departureDate").datepicker('setStartDate', e.date);
                 });
             $('#arrivalDate').datepicker('setStartDate', new Date());
@@ -95,22 +95,19 @@
                         filter.push($(this).attr("id"));
                     }
                 })
-                /*$(".checkFilter").each(function(i, item) {
-                    var id = $(this).attr("id");
-                })*/
-                $(".room").slideDown();
 
-                $(".room").each(function(j,jitem) {
+                $(".room").slideDown(100);
+
+                $(".room").each(function() {
                     var display = true;
                     var $this = $(this);
                     $.each(filter, function(i, item) {
-                        console.log($this);
                         if($this.attr("data-" + item) != "1") {
                             display = false;
                         }
                     });
                     if(!display) {
-                        $this.slideUp();
+                        $this.slideUp(100);
                     }
                 })
 
