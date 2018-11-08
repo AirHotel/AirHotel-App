@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
-                        Rechercher :
+                        {{ "research"|trans }} :
                     </div>
                     <div class="col-md-3">
                         <div class="custom-control custom-checkbox">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-lg-2 col-4">
                             <h3>{{ room.roomtype.price }} €</h3>
-                            <a class="btn btn-success btn-block badge-pill" href="{{ path('room_show', {'id' : room.id}) }}">Voir / Réserver</a>
+                            <a class="btn btn-success btn-block badge-pill" href="{{ path('room_show', {'id' : room.id}) }}">{{ "see"|trans }} / {{ "reserve"|trans }}</a>
                         </div>
                     </div>
 
