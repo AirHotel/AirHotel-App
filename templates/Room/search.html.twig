@@ -95,22 +95,19 @@
                         filter.push($(this).attr("id"));
                     }
                 })
-                /*$(".checkFilter").each(function(i, item) {
-                    var id = $(this).attr("id");
-                })*/
-                $(".room").slideDown();
 
-                $(".room").each(function(j,jitem) {
+                $(".room").slideDown(200);
+
+                $(".room").each(function() {
                     var display = true;
                     var $this = $(this);
                     $.each(filter, function(i, item) {
-                        console.log($this);
                         if($this.attr("data-" + item) != "1") {
                             display = false;
                         }
                     });
                     if(!display) {
-                        $this.slideUp();
+                        $this.slideUp(200);
                     }
                 })
 
