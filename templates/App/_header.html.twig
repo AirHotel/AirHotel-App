@@ -10,7 +10,7 @@
             <li class="nav-item nav-link">
                 {% if ticket %}
                     <a class="nav-link" href="{{ path('ticket_show') }}">
-                        ticket n° {{ ticket }}
+                        ticket {{ ticket }}
                     </a>
                 {% else %}
                     <a class="nav-link" href="{{ path('ticket_login') }}">
