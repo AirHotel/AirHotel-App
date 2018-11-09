@@ -38,12 +38,12 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
     private function getData(): array
     {
         return [
-            ['ABCDEFGH',date_create("2013-03-15"),date_create("2013-03-20")],
-            ['BCDEFGHI',date_create("2013-03-16"),date_create("2013-03-17")],
-            ['CDEFHIJ',date_create("2013-03-17"),date_create("2013-03-18")],
-            ['DEFGHIJK',date_create("2013-03-18"),date_create("2013-03-20")],
-            ['EFGHIJKL',date_create("2013-03-19"),date_create("2013-03-21")],
-            ['FGHIJKLM',date_create("2013-03-19"),date_create("2013-03-21")],
+            ['aoirol',date_create("2013-03-15"),date_create("2013-03-20")],
+            ['bvffwk',date_create("2013-03-16"),date_create("2013-03-17")],
+            ['dilrow',date_create("2013-03-17"),date_create("2013-03-18")],
+            ['encfkc',date_create("2013-03-18"),date_create("2013-03-20")],
+            ['eotvnj',date_create("2013-03-19"),date_create("2013-03-21")],
+            ['jptqov',date_create("2013-03-19"),date_create("2013-03-21")],
         ];
     }
 

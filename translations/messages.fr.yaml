@@ -19,7 +19,7 @@ contact: Contactez nous
 legalmentions: Mentions Légales
 submit: Valider
 myTicket: Mon billet
-nbTicket: Entrer mon numero de mon billet
+nbTicket: Renseignez votre numero de billet
 handiccaped: Handicapé
 animals: Animaux
 smoker: Fumeur
@@ -30,9 +30,9 @@ rooms: Chambres
 arrivalDate: Date d'arrivée
 departDate: Date de départ
 reserve: Réserver
-cipher: Cryptograme
+cipher: Cryptogramme
 expiryDate : Date d'expiration
-cardCode : Code de carte
+cardCode : Numéro de carte
 holder : Titulaire
 typeofroom: Type de chambre
 research: Rechercher

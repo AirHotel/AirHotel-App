@@ -22,7 +22,8 @@
     {% if app.environment == "dev" %}
         <div class="container p-5">
             <div class="jumbotron font-weight-light text-center">
-                <h2 class="pb-5">Ceci est affiché qu'en environnement de développement</h2>
+                <h2>Tickets valides</h2>
+                <p class="pb-4">Ceci est affiché uniquement en environnement de développement</p>
                 {% for ticketValide in ticketsValides %}
                     <p>{{ ticketValide.id }}</p>
                 {% endfor %}

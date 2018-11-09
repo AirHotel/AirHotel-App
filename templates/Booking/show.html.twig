@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% set ticket = app.session.get('ticket') %}
+{% set arrivalDate = app.session.get('arrivalDate') %}
+{% set departDate = app.session.get('departDate') %}
+
+{% block body %}
+    <div class="container">
+            {# Partie chambre réservation #}
+            <div class="col-md-12 text-center pt-3">
+                <div class="container-fluid" id="{{ booking.room.roomtype.name|lower }}-room"></div>
+                <h1>{{ "room"| trans }} {{ booking.room.id }}</h1>
+                <h2>Type : {{ ('index.' ~ booking.room.roomtype.name|lower) | trans }}</h2>
+                <p>{{ "price"| trans }} : <strong>{{ booking.room.roomtype.price }} €</strong></p>
+                <p>
+                    {{ "smoker"| trans }} :
+                    {% if booking.room.smokingAllowed %}
+                        <i class="fas fa-check-circle"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </p>
+                <p>
+                    {{ "animals"| trans }} :
+                    {% if booking.room.animalAllowed %}
+                        <i class="fas fa-check-circle"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </p>
+                <p>
+                    {{ "handiccaped"| trans }} :
+                    {% if booking.room.handicappedAccess %}
+                        <i class="fas fa-check-circle"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </p>
+                <div class="col-12">
+                    <p>{{ "from"|trans }} <strong>{{ booking.dateArrival|date("m/d/Y") }}</strong> {{ "to"|trans }} <strong>{{ booking.dateDeparture|date("m/d/Y") }}</strong></p>
+                </div>
+            </div>
+    </div>
+{% endblock %}
