@@ -26,24 +26,28 @@ class RoomRepository extends ServiceEntityRepository
 
     public function getAvailableRoomsForDates($da_arrival, $da_departure)
     {
+        $da_arrival = date_create($da_arrival);
+        $da_departure = date_create($da_departure);
+
         $sql = "SELECT room.id
                 FROM room,booking
                 WHERE room.id = booking.room_id
                 AND booking.date_arrival NOT BETWEEN $da_arrival AND $da_departure
                 AND booking.date_departure NOT BETWEEN $da_arrival AND $da_departure
                 AND $da_arrival NOT BETWEEN booking.date_arrival AND booking.date_departure";
+
         $em = $this->getEntityManager();
-        try {
-            $stmt = $em->getConnection()->prepare($sql);
-        } catch (DBALException $e) {
-            return $e->getMessage();
-        }
+        $stmt = $em->getConnection()->prepare($sql);
+
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
     public function getAvailableRoomsForDatesByRoomType($da_arrival, $da_departure, $roomType)
     {
+        $da_arrival = date_create($da_arrival);
+        $da_departure = date_create($da_departure);
+
         $sql = "SELECT room.id
                 FROM room,booking
                 WHERE room.id = booking.room_id
@@ -51,12 +55,10 @@ class RoomRepository extends ServiceEntityRepository
                 AND booking.date_arrival NOT BETWEEN $da_arrival AND $da_departure
                 AND booking.date_departure NOT BETWEEN $da_arrival AND $da_departure
                 AND $da_arrival NOT BETWEEN booking.date_arrival AND booking.date_departure";
+
         $em = $this->getEntityManager();
-        try {
-            $stmt = $em->getConnection()->prepare($sql);
-        } catch (DBALException $e) {
-            return $e->getMessage();
-        }
+        $stmt = $em->getConnection()->prepare($sql);
+
         $stmt->execute();
         return $stmt->fetchAll();
     }

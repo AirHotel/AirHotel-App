@@ -55,9 +55,9 @@ class RoomController
     {
         $form = $request->request->all();
 
-        $rooms = $this->roomRepository->findBy(['roomType' => $form['type']]);
-//        $rooms = $this->roomRepository->getAvailableRoomsForDatesByRoomType($form['arrivalDate'], $form['departDate'], $form['type']);
-//        var_dump($rooms);
+      //  $rooms = $this->roomRepository->findBy(['roomType' => $form['type']]);
+        $rooms = $this->roomRepository->getAvailableRoomsForDatesByRoomType($form['arrivalDate'], $form['departDate'], $form['type']);
+        var_dump($rooms);
 
         $session->set('arrivalDate', $form['arrivalDate']);
         $session->set('departDate', $form['departDate']);
