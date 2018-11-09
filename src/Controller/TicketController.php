@@ -58,4 +58,13 @@ class TicketController extends AbstractController
 
         return new Response($twig->render('ticket/show.html.twig'));
     }
+
+    /**
+     * @Route("/logout", name = "logout")
+     */
+    public function logout(SessionInterface $session, Environment $twig)
+    {
+        $session->clear('ticket');
+        return $this->redirectToRoute('app_index');
+    }
 }
