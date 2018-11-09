@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% set ticket = app.session.get('ticket') %}
+
 {% block body %}
-	coucou
+    <div class="container text-center">
+        <h1>Ticket #{{ ticket }}</h1>
+    </div>
 {% endblock %}
