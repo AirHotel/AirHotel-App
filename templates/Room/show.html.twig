@@ -63,9 +63,12 @@
                         </div>
                     </div>
 
-                    <button style="margin-top: 20px" type="button" class="btn btn-warning btn-block">
+                    <!--<button action="{{ path('booking_add', {'room_id':room.id}) }}" style="margin-top: 20px" type="button" class="btn btn-warning btn-block">
                         {{ "submit"|trans }}
-                    </button>
+                    </button>-->
+                    <a class="btn btn-warning btn-block mt-3" href="{{ path('booking_add', {'room_id':room.id}) }}">
+                        {{ "submit"|trans }}
+                    </a>
                 {% else %}
                     <a style="margin-top: 20px; margin-bottom: 20px" href="{{ path('ticket_login') }}"
                        class="btn btn-light">

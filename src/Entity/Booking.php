@@ -55,7 +55,7 @@ class Booking
      */
     public function setTicketNumber(string $ticketNumber): void
     {
-        $this->ticket_number = $ticketNumber;
+        $this->ticketNumber = $ticketNumber;
     }
 
     /**
