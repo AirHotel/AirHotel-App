@@ -22,21 +22,21 @@ class TicketsValides
      * @ORM\Id()
      * @ORM\Column(type="string")
      */
-    private $numero_ticket;
+    private $id;
 
     /**
      * @return string
      */
-    public function getNumeroTicket(): string
+    public function getId(): string
     {
-        return $this->numero_ticket;
+        return $this->id;
     }
 
     /**
-     * @param string $numero_ticket
+     * @param string $id
      */
-    public function setNumeroTicket(string $numero_ticket): void
+    public function setId(string $id): void
     {
-        $this->numero_ticket = $numero_ticket;
+        $this->id = $id;
     }
 }

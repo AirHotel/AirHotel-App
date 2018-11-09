@@ -6,15 +6,16 @@
 
         <ul class="nav navbar-nav">
             <li class="nav-item nav-link">
-                {% if app.user %}
-                    {{ 'navbar.hello'|trans }} {{ app.user.username }}
+                {% set ticket = app.session.get('ticket') %}
+                {% if ticket %}
+                    <a class="nav-link" href="{{ path('ticket_show') }}">
+                        {{ ticket }}
+                    </a>
                 {% else %}
-                    <li>
-                        <a class="nav-link" href="{{ path('user_login') }}">
-                            <i class="fa fa-sign-in pr-1"></i>
-                            {{ 'navbar.connect'|trans }}
-                        </a>
-                    </li>
+                    <a class="nav-link" href="{{ path('ticket_login') }}">
+                        <i class="fa fa-sign-in pr-1"></i>
+                        {{ 'navbar.connect'|trans }}
+                    </a>
                 {% endif %}
             </li>
 

@@ -15,6 +15,7 @@ use App\Repository\RoomRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
@@ -84,11 +85,11 @@ class RoomController
      */
     public function search(Request $request, SessionInterface $session, Environment $twig)
     {
-        $args = $request->request->all();
-        $rooms = $this->roomRepository->findBy(['roomType' => $args['type']]);
+        $form = $request->request->all();
+        $rooms = $this->roomRepository->findBy(['roomType' => $form['type']]);
 
-        $session->set('arrivalDate', $args['arrivalDate']);
-        $session->set('departDate', $args['departDate']);
+        $session->set('arrivalDate', $form['arrivalDate']);
+        $session->set('departDate', $form['departDate']);
 
         return new Response($twig->render('room/list.html.twig', [
             'rooms' => $rooms

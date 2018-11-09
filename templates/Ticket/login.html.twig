@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid" id="img-accueil"></div>
+
+    <div class="container mt-3">
+        <form class="form-row align-items-center" method="POST" action="{{ path('ticket_login') }}">
+            <div class="col-md-4 text-center">
+                <h1>{{ 'myTicket'|trans }}</h1>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="ticket" id="nbBillet"
+                       placeholder="{{ 'nbTicket'|trans }}">
+            </div>
+
+            <div class="col-md-4">
+                <button style="margin: 10px" type="submit" class="btn btn-primary btn-block">{{ 'submit'|trans }}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
