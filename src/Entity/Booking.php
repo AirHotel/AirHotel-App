@@ -22,7 +22,7 @@ class Booking
      * @ORM\Id()
      * @ORM\Column(type="string")
      */
-    private $ticket_number;
+    private $ticketNumber;
 
     /**
      * @var room
@@ -35,27 +35,27 @@ class Booking
     /**
      * @ORM\Column(type="date")
      */
-    private $date_arrival;
+    private $dateArrival;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date_departure;
+    private $dateDeparture;
 
     /**
      * @return string
      */
     public function getTicketNumber(): string
     {
-        return $this->ticket_number;
+        return $this->ticketNumber;
     }
 
     /**
      * @param string $ticket_number
      */
-    public function setTicketNumber(string $ticket_number): void
+    public function setTicketNumber(string $ticketNumber): void
     {
-        $this->ticket_number = $ticket_number;
+        $this->ticket_number = $ticketNumber;
     }
 
     /**
@@ -80,15 +80,15 @@ class Booking
      */
     public function getDateArrival()
     {
-        return $this->date_arrival;
+        return $this->dateArrival;
     }
 
     /**
      * @param mixed $date_arrival
      */
-    public function setDateArrival($date_arrival): void
+    public function setDateArrival($dateArrival): void
     {
-        $this->date_arrival = $date_arrival;
+        $this->dateArrival = $dateArrival;
     }
 
     /**
@@ -96,15 +96,15 @@ class Booking
      */
     public function getDateDeparture()
     {
-        return $this->date_departure;
+        return $this->dateDeparture;
     }
 
     /**
      * @param mixed $date_departure
      */
-    public function setDateDeparture($date_departure): void
+    public function setDateDeparture($dateDeparture): void
     {
-        $this->date_departure = $date_departure;
+        $this->dateDeparture = $dateDeparture;
     }
 
 
