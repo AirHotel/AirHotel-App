@@ -11,6 +11,7 @@
 
 namespace App\Controller;
 
+use App\Repository\TicketsValidesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,12 +28,17 @@ class TicketController extends AbstractController
     /**
      * @Route("/login", name = "login")
      */
-    public function login(Request $request, SessionInterface $session, Environment $twig)
+    public function login(Request $request, SessionInterface $session, Environment $twig, TicketsValidesRepository $ticketsValidesRepository)
     {
         $ticket = $request->request->get('ticket');
 
         if($ticket !== null)
         {
+            if(!$ticketsValidesRepository->isValid($ticket))
+            {
+                throw new NotFoundHttpException("This ticket is not valid");
+            };
+
             $session->set('ticket', $ticket);
             return $this->redirectToRoute('app_index');
         }

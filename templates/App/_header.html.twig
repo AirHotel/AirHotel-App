@@ -1,3 +1,5 @@
+{% set ticket = app.session.get('ticket') %}
+
 <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -6,10 +8,9 @@
 
         <ul class="nav navbar-nav">
             <li class="nav-item nav-link">
-                {% set ticket = app.session.get('ticket') %}
                 {% if ticket %}
                     <a class="nav-link" href="{{ path('ticket_show') }}">
-                        {{ ticket }}
+                        ticket n° {{ ticket }}
                     </a>
                 {% else %}
                     <a class="nav-link" href="{{ path('ticket_login') }}">
