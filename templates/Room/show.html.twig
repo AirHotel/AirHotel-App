@@ -65,20 +65,18 @@
                         <input type="text" id="codeCb" class="form-control"/>
 
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
-                                    <input type="text" id="expirationDate" class="form-control"/>
-                                </div>
-                                <div class="col-sm">
-                                    <h3 class="text-white">{{ "cipher"|trans }} :</h3>
-                                    <input type="text" id="cryptogtamme" class="form-control"/>
-                                </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
+                                <input type="text" id="expirationDate" class="form-control"/>
+                            </div>
+                            <div class="col-sm">
+                                <h3 class="text-white">{{ "cipher"|trans }} :</h3>
+                                <input type="text" id="cryptogtamme" class="form-control"/>
                             </div>
                         </div>
 
-                        <button style="margin-top: 20px" type="button" class="btn btn-warning">
+                        <button style="margin-top: 20px" type="button" class="btn btn-warning btn-block">
                             {{ "submit"|trans }}
                         </button>
                     {% else %}
