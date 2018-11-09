@@ -8,7 +8,7 @@
 
 namespace App\Entity;
 
-
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
@@ -26,15 +26,14 @@ class CreditCard
     private $numero_card;
 
     /**
-     * @var string
      *
-     * @ORM\Column(type="String")
+     * @ORM\Column(type="string")
      */
     private $nom_prenom;
 
     /**
      *
-     * @ORM\Column(type="Date")
+     * @ORM\Column(type="date")
      */
     private $expiration_date;
 

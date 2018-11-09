@@ -11,7 +11,6 @@ namespace App\DataFixtures;
 
 use App\Entity\CreditCard;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class CreditCardFixtures extends Fixture
