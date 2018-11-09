@@ -34,10 +34,10 @@ class TicketController extends AbstractController
         if($ticket !== null)
         {
             $session->set('ticket', $ticket);
-            return $this->redirectToRoute('ticket_show');
+            return $this->redirectToRoute('app_index');
         }
 
-        return $this->redirectToRoute('app_index');
+        return new Response($twig->render('ticket/login.html.twig'));
     }
 
     /**
