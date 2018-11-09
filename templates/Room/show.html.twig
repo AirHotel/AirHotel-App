@@ -1,112 +1,101 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="container text-center">
-                    {% if room.roomtype.name == "Single" %}
-                        <div style="margin-top: 20px" class="container-fluid" id="single-room"></div>
-                    {% elseif room.roomtype.name == "Double" %}
-                        <div style="margin-top: 20px" class="container-fluid" id="double-room"></div>
-                    {% else %}
-                        <div style="margin-top: 20px" class="container-fluid" id="family-room"></div>
-                    {% endif %}
-                    <h1>{{ "room"| trans }} {{ room.id }}</h1>
-                    <h2>Type : {{ ('index.' ~ room.roomtype.name|lower) | trans }}</h2>
-                    <p>{{ "price"| trans }} : {{ room.roomtype.price }}</p>
-                    <p>{{ "smoker"| trans }} :
-                        {% if room.smokingAllowed %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <p>{{ "animals"| trans }} :
-                        {% if room.animalAllowed %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <p>{{ "handiccaped"| trans }} :
-                        {% if room.handicappedAccess %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <div class="col-12">
-                        Date:
-                        {{ "from"|trans }}
-                        <p id="arrivalDate">{{ app.session.get('arrivalDate') }}</p>
-                        {{ "to"|trans }}
-                        <p style="margin-bottom: 20px" id="departureDate">{{ app.session.get('departDate') }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm bg-dark">
-                <div class="container text-center">
-                    {% if app.user %}
-                        <div style="margin-top: 20px" class="container-fluid" id="card-payment"></div>
-                        <h3 class="text-white">{{ "holder"|trans }} :</h3>
-                        <input type="text" id="titulaire" class="form-control"/>
-                        <h3 class="text-white">{{ "cardCode"|trans }} :</h3>
-                        <input type="text" id="codeCb" class="form-control"/>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<div class="container text-center">
+				{% if room.roomtype.name == "Single" %}
+				<div style="margin-top: 20px" class="container-fluid" id="single-room"></div>
+				{% elseif room.roomtype.name == "Double" %}
+				<div style="margin-top: 20px" class="container-fluid" id="double-room"></div>
+				{% else %}
+				<div style="margin-top: 20px" class="container-fluid" id="family-room"></div>
+				{% endif %}
+				<h1>{{ "room"| trans }} {{ room.id }}</h1>
+				<h2>Type : {{ ('index.' ~ room.roomtype.name|lower) | trans }}</h2>
+				<p>{{ "price"| trans }} : {{ room.roomtype.price }}</p>
+				<p>{{ "smoker"| trans }} : {% if room.smokingAllowed == 1 %}
+					<i class="fas fa-check-circle"></i>
+					{% else %}
+					<i class="fas fa-times-circle"></i>
+				{% endif %}</p>
+				<p>{{ "animals"| trans }} : {% if room.animalAllowed == 1 %}
+					<i class="fas fa-check-circle"></i>
+					{% else %}
+					<i class="fas fa-times-circle"></i>
+				{% endif %}</p>
+				<p>{{ "handiccaped"| trans }} : {% if room.handicappedAccess == 1 %}
+					<i class="fas fa-check-circle"></i>
+					{% else %}
+					<i class="fas fa-times-circle"></i>
+				{% endif %}</p>
+				<div class="col-12">Date: {{ "from"|trans }} 
+					<input type="text" id="arrivalDate"class="form-control"/> {{ "to"|trans }}
+					<input style="margin-bottom: 20px" type="text" id="departureDate" class="form-control"/></div>
+				</div>
+			</div>
+			<div class="col-sm bg-dark">
+				<div class="container text-center">
+					{% if app.user %}
+					<div style="margin-top: 20px" class="container-fluid" id="card-payment"></div>
+					<h3 class="text-white">{{ "holder"|trans }} :</h3>
+					<input type="text" id="titulaire" class="form-control"/>
+					<h3 class="text-white">{{ "cardCode"|trans }} :</h3>
+					<input type="text" id="codeCb" class="form-control"/>
+					
 
+					<div class="container">
+						<div class="row">
+							<div class="col-sm">
+								<h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
+								<input type="text" id="expirationDate" class="form-control"/>
+							</div>
+							<div class="col-sm">
+								<h3 class="text-white">{{ "cipher"|trans }} :</h3>
+								<input type="text" id="cryptogtamme" class="form-control"/>
+							</div>
+						</div>
+					</div>
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
-                                    <input type="text" id="expirationDate" class="form-control"/>
-                                </div>
-                                <div class="col-sm">
-                                    <h3 class="text-white">{{ "cipher"|trans }} :</h3>
-                                    <input type="text" id="cryptogtamme" class="form-control"/>
-                                </div>
-                            </div>
-                        </div>
+					<button style="margin-top: 20px" type="button" class="btn btn-warning">{{ "submit"|trans }}</button>
+					{% else %}
+					<a style="margin-top: 20px; margin-bottom: 20px" href="{{ path('user_login') }}" class="btn btn-light">{{ 'navbar.connect'|trans }}</a>
+					{% endif %}
 
-                        <button style="margin-top: 20px" type="button"
-                                class="btn btn-warning">{{ "submit"|trans }}</button>
-                    {% else %}
-                        <a style="margin-top: 20px" href="{{ path('user_login') }}"
-                           class="btn btn-light">{{ 'navbar.connect'|trans }}</a>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#arrivalDate, #departureDate").datepicker({
-                format: "dd/mm/yyyy"
-            });
+{{ parent() }}
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#arrivalDate, #departureDate").datepicker({
+			format: "dd/mm/yyyy"
+		});
 
-            $('#arrivalDate').datepicker()
-                .on("changeDate", function (e) {
-                    console.log(e.date);
-                    $("#departureDate").datepicker('setStartDate', e.date);
-                });
-            $('#arrivalDate').datepicker('setStartDate', new Date());
+		$('#arrivalDate').datepicker()
+		.on("changeDate", function (e) {
+			console.log(e.date);
+			$("#departureDate").datepicker('setStartDate', e.date);
+		});
+		$('#arrivalDate').datepicker('setStartDate', new Date());
 
-            $('#departureDate').datepicker()
-                .on("changeDate", function (e) {
-                    $("#arrivalDate").datepicker('setEndDate', e.date);
-                });
+		$('#departureDate').datepicker()
+		.on("changeDate", function (e) {
+			$("#arrivalDate").datepicker('setEndDate', e.date);
+		});
 
-            $('#expirationDate').datepicker({
-                format: "mm/yyyy",
-                minViewMode: 1,
-                language: "fr",
-                autoclose: true
-            });
-        })
-    </script>
+		$('#expirationDate').datepicker({
+			format: "mm/yyyy",
+			minViewMode: 1,
+			language: "fr",
+			autoclose: true
+		});
+	})
+</script>
 {% endblock %}
