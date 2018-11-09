@@ -15,7 +15,6 @@ use App\Entity\Room;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\DBAL\DBALException;
-use Symfony\Component\Validator\Constraints\Date;
 
 class RoomRepository extends ServiceEntityRepository
 {
@@ -30,6 +29,25 @@ class RoomRepository extends ServiceEntityRepository
         $sql = "SELECT room.id
                 FROM room,booking
                 WHERE room.id = booking.room_id
+                AND booking.date_arrival NOT BETWEEN $da_arrival AND $da_departure
+                AND booking.date_departure NOT BETWEEN $da_arrival AND $da_departure
+                AND $da_arrival NOT BETWEEN booking.date_arrival AND booking.date_departure";
+        $em = $this->getEntityManager();
+        try {
+            $stmt = $em->getConnection()->prepare($sql);
+        } catch (DBALException $e) {
+            return $e->getMessage();
+        }
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function getAvailableRoomsForDatesByRoomType($da_arrival, $da_departure, $roomType)
+    {
+        $sql = "SELECT room.id
+                FROM room,booking
+                WHERE room.id = booking.room_id
+                AND room.type = $roomType
                 AND booking.date_arrival NOT BETWEEN $da_arrival AND $da_departure
                 AND booking.date_departure NOT BETWEEN $da_arrival AND $da_departure
                 AND $da_arrival NOT BETWEEN booking.date_arrival AND booking.date_departure";
