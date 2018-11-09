@@ -8,84 +8,70 @@
     <div class="container">
         <div class="row">
             {# Partie chambre réservation #}
-            <div class="col-sm">
-                <div class="container text-center">
-                    {% if room.roomtype.name == "Single" %}
-                        <div style="margin-top: 20px" class="container-fluid" id="single-room"></div>
-                    {% elseif room.roomtype.name == "Double" %}
-                        <div style="margin-top: 20px" class="container-fluid" id="double-room"></div>
+            <div class="col-md-6 text-center pt-3">
+                <div class="container-fluid" id="{{ room.roomtype.name|lower }}-room"></div>
+                <h1>{{ "room"| trans }} {{ room.id }}</h1>
+                <h2>Type : {{ ('index.' ~ room.roomtype.name|lower) | trans }}</h2>
+                <p>{{ "price"| trans }} : <strong>{{ room.roomtype.price }} €</strong></p>
+                <p>
+                    {{ "smoker"| trans }} :
+                    {% if room.smokingAllowed %}
+                        <i class="fas fa-check-circle"></i>
                     {% else %}
-                        <div style="margin-top: 20px" class="container-fluid" id="family-room"></div>
+                        <i class="fas fa-times-circle"></i>
                     {% endif %}
-                    <h1>{{ "room"| trans }} {{ room.id }}</h1>
-                    <h2>Type : {{ ('index.' ~ room.roomtype.name|lower) | trans }}</h2>
-                    <p>{{ "price"| trans }} : {{ room.roomtype.price }}</p>
-                    <p>
-                        {{ "smoker"| trans }} :
-                        {% if room.smokingAllowed %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <p>
-                        {{ "animals"| trans }} :
-                        {% if room.animalAllowed %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <p>
-                        {{ "handiccaped"| trans }} :
-                        {% if room.handicappedAccess %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-times-circle"></i>
-                        {% endif %}
-                    </p>
-                    <div class="col-12">
-                        Date:
-                        {{ "from"|trans }}
-                        <p>{{ arrivalDate }}</p>
-                        {{ "to"|trans }}
-                        <p>{{ departDate }}</p>
-                    </div>
+                </p>
+                <p>
+                    {{ "animals"| trans }} :
+                    {% if room.animalAllowed %}
+                        <i class="fas fa-check-circle"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </p>
+                <p>
+                    {{ "handiccaped"| trans }} :
+                    {% if room.handicappedAccess %}
+                        <i class="fas fa-check-circle"></i>
+                    {% else %}
+                        <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </p>
+                <div class="col-12">
+                    <p>{{ "from"|trans }} <strong>{{ arrivalDate }}</strong> {{ "to"|trans }} <strong>{{ departDate }}</strong></p>
                 </div>
             </div>
 
             {# Partie paiement #}
-            <div class="col-sm bg-dark">
-                <div class="container text-center">
-                    {% if ticket %}
-                        <div style="margin-top: 20px" class="container-fluid" id="card-payment"></div>
-                        <h3 class="text-white">{{ "holder"|trans }} :</h3>
-                        <input type="text" id="titulaire" class="form-control"/>
-                        <h3 class="text-white">{{ "cardCode"|trans }} :</h3>
-                        <input type="text" id="codeCb" class="form-control"/>
+            <div class="col-md-6 bg-dark text-center">
+                {% if ticket %}
+                    <div style="margin-top: 20px" class="container-fluid" id="card-payment"></div>
+                    <h3 class="text-white">{{ "holder"|trans }} :</h3>
+                    <input type="text" id="titulaire" class="form-control"/>
+                    <h3 class="text-white">{{ "cardCode"|trans }} :</h3>
+                    <input type="text" id="codeCb" class="form-control"/>
 
 
-                        <div class="row">
-                            <div class="col-sm">
-                                <h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
-                                <input type="text" id="expirationDate" class="form-control"/>
-                            </div>
-                            <div class="col-sm">
-                                <h3 class="text-white">{{ "cipher"|trans }} :</h3>
-                                <input type="text" id="cryptogtamme" class="form-control"/>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <h3 class="text-white">{{ "expiryDate"|trans }} :</h3>
+                            <input type="text" id="expirationDate" class="form-control"/>
                         </div>
+                        <div class="col-sm">
+                            <h3 class="text-white">{{ "cipher"|trans }} :</h3>
+                            <input type="text" id="cryptogtamme" class="form-control"/>
+                        </div>
+                    </div>
 
-                        <button style="margin-top: 20px" type="button" class="btn btn-warning btn-block">
-                            {{ "submit"|trans }}
-                        </button>
-                    {% else %}
-                        <a style="margin-top: 20px; margin-bottom: 20px" href="{{ path('user_login') }}"
-                           class="btn btn-light">
-                            {{ 'navbar.connect'|trans }}
-                        </a>
-                    {% endif %}
-                </div>
+                    <button style="margin-top: 20px" type="button" class="btn btn-warning btn-block">
+                        {{ "submit"|trans }}
+                    </button>
+                {% else %}
+                    <a style="margin-top: 20px; margin-bottom: 20px" href="{{ path('user_login') }}"
+                       class="btn btn-light">
+                        {{ 'navbar.connect'|trans }}
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>
