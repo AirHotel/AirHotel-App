@@ -34,7 +34,6 @@ class Booking
 
     /**
      * @ORM\Column(type="date")
-     * @ORM\Column(type="string")
      */
     private $date_arrival;
 
