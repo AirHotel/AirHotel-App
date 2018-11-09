@@ -6,8 +6,8 @@
 
 {% block body %}
     <div class="container">
-            {# Partie chambre réservation #}
             <div class="col-md-12 text-center pt-3">
+                <h1>{{ "bookings"| trans }}</h1>
                 <div class="container-fluid" id="{{ booking.room.roomtype.name|lower }}-room"></div>
                 <h1>{{ "room"| trans }} {{ booking.room.id }}</h1>
                 <h2>Type : {{ ('index.' ~ booking.room.roomtype.name|lower) | trans }}</h2>
