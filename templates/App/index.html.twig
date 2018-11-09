@@ -14,12 +14,12 @@
                                    class="form-control"
                                    name="arrivalDate"/>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mt-md-0">
                             <input required type="text" id="departureDate" placeholder="{{ "departDate"|trans }}"
                                    class="form-control"
                                    name="departDate"/>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mt-md-0">
                             <select required name="type" class="form-control">
                                 <option selected disabled>{{ "typeofroom"|trans }}</option>
                                 {% for roomType in roomTypes %}
@@ -27,7 +27,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 mt-3 mt-md-0">
                             <button type="submit" class="btn btn-success btn-block">
                                 <i class="fa fa-search"></i> {{ "research"|trans }}
                             </button>
