@@ -34,9 +34,9 @@ class CreditCardFixtures extends Fixture
     private function getData(): array
     {
         return [
-            ['Allegrini Romaric','1234567812345678',date_create("01/2020"),'123'],
-            ['Claveau Vincent','8765432187654321',date_create("06/2019"),'234'],
-            ['Dardant Aurelien','4321876543218765',date_create("12/2020"),'345']
+            ['1234567812345678','Allegrini Romaric',date_create("2020-01"),'123'],
+            ['8765432187654321','Claveau Vincent',date_create("2019-06"),'234'],
+            ['4321876543218765','Dardant Aurelien',date_create("2020-12"),'345']
         ];
     }
 }
