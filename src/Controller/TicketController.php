@@ -43,7 +43,10 @@ class TicketController extends AbstractController
             return $this->redirectToRoute('app_index');
         }
 
-        return new Response($twig->render('ticket/login.html.twig'));
+        $ticketsValides = $ticketsValidesRepository->findAll();
+        return new Response($twig->render('ticket/login.html.twig', [
+            'ticketsValides' => $ticketsValides
+        ]));
     }
 
     /**
